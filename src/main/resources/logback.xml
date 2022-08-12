@@ -1,0 +1,20 @@
+<?xml version="l.O" encoding="UTF-8"?>
+<configuration>
+    <contextListener class = "ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <appender name="console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SS [%thread] %-5level %logger{5} - %msg%n}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.kpac" level="debug"/>
+    <logger name="org.springframework" level="off"/>
+
+    <root level="debug">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
