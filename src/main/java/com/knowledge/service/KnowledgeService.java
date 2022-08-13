@@ -1,7 +1,6 @@
-package com.knowledgebase.service;
+package com.knowledge.service;
 
-import com.knowledgebase.model.Knowledge;
-import org.springframework.stereotype.Service;
+import com.knowledge.model.Knowledge;
 
 import java.util.List;
 

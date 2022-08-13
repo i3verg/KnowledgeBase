@@ -1,12 +1,13 @@
-package com.knowledgebase.service.impl;
+package com.knowledge.service.impl;
 
-import com.knowledgebase.dao.PackageDao;
-import com.knowledgebase.model.Package;
-import com.knowledgebase.service.PackageService;
+import com.knowledge.dao.PackageDao;
+import com.knowledge.model.Package;
+import com.knowledge.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PackageServiceImpl implements PackageService {
     @Autowired
     PackageDao packageDao;

@@ -1,6 +1,6 @@
-package com.knowledgebase.rowmapper;
+package com.knowledge.rowmapper;
 
-import com.knowledgebase.model.Knowledge;
+import com.knowledge.model.Knowledge;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

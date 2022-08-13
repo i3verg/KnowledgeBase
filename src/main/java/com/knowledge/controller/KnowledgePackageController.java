@@ -1,7 +1,7 @@
-package com.knowledgebase.controller;
+package com.knowledge.controller;
 
-import com.knowledgebase.service.KnowledgeService;
-import com.knowledgebase.service.PackageService;
+import com.knowledge.service.KnowledgeService;
+import com.knowledge.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

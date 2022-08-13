@@ -1,8 +1,8 @@
-package com.knowledgebase.service.impl;
+package com.knowledge.service.impl;
 
-import com.knowledgebase.dao.KnowledgeDao;
-import com.knowledgebase.model.Knowledge;
-import com.knowledgebase.service.KnowledgeService;
+import com.knowledge.dao.KnowledgeDao;
+import com.knowledge.model.Knowledge;
+import com.knowledge.service.KnowledgeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

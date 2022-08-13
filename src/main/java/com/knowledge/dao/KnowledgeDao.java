@@ -1,6 +1,6 @@
-package com.knowledgebase.dao;
+package com.knowledge.dao;
 
-import com.knowledgebase.model.Knowledge;
+import com.knowledge.model.Knowledge;
 
 import java.util.List;
 

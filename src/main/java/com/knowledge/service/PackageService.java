@@ -1,6 +1,6 @@
-package com.knowledgebase.service;
+package com.knowledge.service;
 
-import com.knowledgebase.model.Package;
+import com.knowledge.model.Package;
 
 import java.util.List;
 public interface PackageService {

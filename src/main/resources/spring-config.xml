@@ -18,6 +18,7 @@
         <property name="username" value="kpacuser" />
         <property name="password" value="kpacuser" />
     </bean>
+
     <bean id="txManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
@@ -29,16 +30,15 @@
     </bean>
     <!-- service -->
     <bean id="knowledgeService"
-          class="com.knowledgebase.service.impl.KnowledgeServiceImpl" />
+          class="com.knowledge.service.impl.KnowledgeServiceImpl" />
 
     <bean id="packageService"
-          class="com.knowledgebase.service.impl.PackageServiceImpl" />
+          class="com.knowledge.service.impl.PackageServiceImpl" />
     <!-- dao -->
     <bean id="knowledgeDao"
-          class="com.knowledgebase.dao.impl.KnowledgeDaoImpl" />
+          class="com.knowledge.dao.impl.KnowledgeDaoImpl" />
 
-        <!-- dao -->
     <bean id="packageDao"
-          class="com.knowledgebase.dao.impl.PackageDaoImpl" />
+          class="com.knowledge.dao.impl.PackageDaoImpl" />
 
 </beans>

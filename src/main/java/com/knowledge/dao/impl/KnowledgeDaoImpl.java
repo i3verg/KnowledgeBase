@@ -1,15 +1,13 @@
-package com.knowledgebase.dao.impl;
+package com.knowledge.dao.impl;
 
-import com.knowledgebase.dao.KnowledgeDao;
-import com.knowledgebase.model.Knowledge;
-import com.knowledgebase.rowmapper.KnowledgeRowMapper;
+import com.knowledge.dao.KnowledgeDao;
+import com.knowledge.model.Knowledge;
+import com.knowledge.rowmapper.KnowledgeRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
