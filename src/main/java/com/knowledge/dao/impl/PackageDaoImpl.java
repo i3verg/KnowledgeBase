@@ -25,9 +25,9 @@ public class PackageDaoImpl implements PackageDao {
     }
 
     @Override
-    public Package[] getAllPackages() {
+    public List<Package> getAllPackages() {
         List<Package> packages = jdbcTemplate.query("select * from PACKAGE", new PackageRowMapper());
-        return packages.toArray(Package[]::new);
+        return packages;
     }
 
     @Override

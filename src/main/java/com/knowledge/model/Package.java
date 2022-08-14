@@ -55,11 +55,4 @@ public class Package {
         this.knowledgePackageTitle = knowledgePackageTitle;
     }
 
-    @Override
-    public String toString() {
-        return "Package{" +
-                "knowledgePackageId=" + knowledgePackageId +
-                ", knowledgePackageTitle='" + knowledgePackageTitle + '\'' +
-                '}';
-    }
 }

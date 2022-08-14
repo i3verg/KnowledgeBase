@@ -6,7 +6,7 @@ import com.knowledge.model.Package;
 import java.util.List;
 
 public interface PackageDao {
-     Package [] getAllPackages();
+     List<Package> getAllPackages();
      Package getPackage(int packageId);
      List<Knowledge> getPackageWithKnowledge(int id);
      void addPackage(String packageName, List<Knowledge> knowledgeList);

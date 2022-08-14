@@ -23,7 +23,7 @@ public class PackageServiceImpl implements PackageService {
     }
 
     @Override
-    public Package[] getAllPackages() {
+    public List<Package> getAllPackages() {
         return packageDao.getAllPackages();
     }
 

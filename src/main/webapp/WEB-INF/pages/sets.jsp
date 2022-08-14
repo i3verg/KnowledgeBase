@@ -20,10 +20,6 @@
         <h3>List of packages</h3>
         <div id="packageGridBox" style="width: 1000px;height: 600px"></div>
         <script type="text/javascript">
-            var arrayData = [];
-            <c:forEach var="packageItem" items="${packageSet}" varStatus="loop">
-                arrayData[${loop.index}]="${packageItem}";
-            </c:forEach>
             const toolbarData = [
                 {
                     id: "add",
@@ -46,8 +42,8 @@
             ];
             const packageGrid = new dhx.Grid("packageGridBox", {
                 columns: [
-                    {id: "ID", gravity: 3, header: [{text: "ID"}]},
-                    {id: "TITLE", gravity: 2, header: [{text: "ID"}]},
+                    { id: "ID", gravity: 3, header: [{text: "ID"}]},
+                    { id: "TITLE", gravity: 2, header: [{text: "ID"}]},
                     {
                         id: "action", gravity: 1.5, header: [{text: "Actions", align: "center"}],
                         htmlEnable: true, align: "center",
@@ -61,12 +57,12 @@
                 eventHandlers: {
                     onclick: {
                         "remove-button": function (e,data){
-                            grid.data.remove(data.row.id);
+                            packageGrid.data.remove(data.row.id);
                         }
                     }
-                },
-                data: arrayData
+                }
             });
+            packageGrid.data.load(${packageSet});
         </script>
     </c:when>
     <c:otherwise>
