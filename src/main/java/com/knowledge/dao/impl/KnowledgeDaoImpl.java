@@ -6,15 +6,20 @@ import com.knowledge.rowmapper.KnowledgeRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Repository("knowledgeDao")
 public class KnowledgeDaoImpl implements KnowledgeDao {
-    @Autowired
+
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     @Transactional

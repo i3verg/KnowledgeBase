@@ -7,17 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PackageServiceImpl implements PackageService {
-    @Autowired
+
     PackageDao packageDao;
+
+    @Autowired
+    public void setPackageDao(PackageDao packageDao) {
+        this.packageDao = packageDao;
+    }
 
     public PackageServiceImpl(PackageDao packageDao) {
         this.packageDao = packageDao;
     }
 
     @Override
-    public Package [] getAllPackages() {
+    public Package[] getAllPackages() {
         return packageDao.getAllPackages();
     }
 

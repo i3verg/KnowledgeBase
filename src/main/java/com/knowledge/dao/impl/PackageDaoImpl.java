@@ -8,23 +8,33 @@ import com.knowledge.rowmapper.PackageRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository("packageDao")
 public class PackageDaoImpl implements PackageDao {
-    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
-    public Package [] getAllPackages() {
+    public Package[] getAllPackages() {
         List<Package> packages = jdbcTemplate.query("select * from PACKAGE", new PackageRowMapper());
-        return packages.toArray(Package[]::new);    }
+        return packages.toArray(Package[]::new);
+    }
+
     @Override
     public Package getPackage(int packageId) {
         return null;
     }
+
     @Override
     public List<Knowledge> getPackageWithKnowledge(int id) {
         String sql = "select * from knowledge where KNOWLEDGE_ID in\n" +
@@ -32,6 +42,7 @@ public class PackageDaoImpl implements PackageDao {
                 " where p.PACKAGE_ID=?)";
         return jdbcTemplate.query(sql, new KnowledgeRowMapper(), id);
     }
+
     @Override
     @Transactional
     public void addPackage(String packageName, List<Knowledge> knowledgeList) {
@@ -50,6 +61,7 @@ public class PackageDaoImpl implements PackageDao {
             parameters.clear();
         }
     }
+
     @Override
     @Transactional
     public int deletePackage(int packageId) {

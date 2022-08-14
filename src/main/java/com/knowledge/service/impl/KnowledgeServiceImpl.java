@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class KnowledgeServiceImpl implements KnowledgeService {
-    @Autowired
+
     KnowledgeDao knowledgeDao;
+    @Autowired
+    public void setKnowledgeDao(KnowledgeDao knowledgeDao){
+        this.knowledgeDao = knowledgeDao;
+    }
 
     @Override
     public int create(Knowledge knowledge) {

@@ -1,12 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="STYLESHEET" type="text/css" th:href="grid.css">
-    <script scr="grid.js"></script>
+    <spring:theme code="styleSheet" var="app_css" />
+    <spring:url value="/${app_css}" var="app_css_url"/>
+    <spring:url value="/resources/grid/grid.js" var="grid_url" />
+    <script src="${grid_url}" type="text/javascript"><jsp:text/></script>
 </head>
 <body>
 <c:if test="${not empty msg}">
@@ -16,8 +19,8 @@
     <c:when test="${packageSet != null}">
         <h3>List of packages</h3>
         <div id="packageGridBox" style="width: 1000px;height: 600px"></div>
-        <script type="module" src="grid.js">
-            var arrayData = new Array();
+        <script type="text/javascript">
+            var arrayData = [];
             <c:forEach var="packageItem" items="${packageSet}" varStatus="loop">
                 arrayData[${loop.index}]="${packageItem}";
             </c:forEach>
