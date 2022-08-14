@@ -25,14 +25,14 @@ public class KnowledgePackageController {
 
     @GetMapping(value = "sets")
     public String getPackages(ModelMap packageModel){
-        packageModel.addAttribute("package",packageService.getAllPackages());
+        packageModel.addAttribute("packageSet",packageService.getAllPackages());
         return "sets";
     }
 
     @GetMapping(value = "set/{id}")
     public String getPackage(@PathVariable int id, ModelMap packageModel){
         packageModel.addAttribute("packageModel", packageService.getPackage(id));
-        return "set";
+        return "packageModel";
     }
 
 

@@ -18,9 +18,9 @@ public class PackageDaoImpl implements PackageDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public List<Package> getAllPackages() {
-        return jdbcTemplate.query("select * from PACKAGE", new PackageRowMapper());
-    }
+    public Package [] getAllPackages() {
+        List<Package> packages = jdbcTemplate.query("select * from PACKAGE", new PackageRowMapper());
+        return packages.toArray(Package[]::new);    }
     @Override
     public Package getPackage(int packageId) {
         return null;

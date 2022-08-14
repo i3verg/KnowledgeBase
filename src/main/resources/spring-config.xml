@@ -41,4 +41,5 @@
     <bean id="packageDao"
           class="com.knowledge.dao.impl.PackageDaoImpl" />
 
+
 </beans>

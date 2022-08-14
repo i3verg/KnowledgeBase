@@ -25,7 +25,6 @@ public class Package {
     public Package(int knowledgePackageId, String knowledgePackageTitle, Set<KnowledgeReference> knowledgeSet) {
         this.knowledgePackageId = knowledgePackageId;
         this.knowledgePackageTitle = knowledgePackageTitle;
-        this.knowledgeSet = knowledgeSet;
     }
 
 
@@ -54,5 +53,13 @@ public class Package {
 
     public void setKnowledgePackageTitle(String knowledgePackageTitle) {
         this.knowledgePackageTitle = knowledgePackageTitle;
+    }
+
+    @Override
+    public String toString() {
+        return "Package{" +
+                "knowledgePackageId=" + knowledgePackageId +
+                ", knowledgePackageTitle='" + knowledgePackageTitle + '\'' +
+                '}';
     }
 }
