@@ -6,32 +6,28 @@ grant all privileges on KPACDB.* to 'kpacuser'@'localhost';
 flush privileges;
 set global time_zone = '+2';
 
-CREATE TABLE KNOWLEDGE
+create table knowledge
 (
-    KNOWLEDGE_ID          INT           NOT NULL AUTO_INCREMENT,
-    TITLE                VARCHAR(250)  NOT NULL,
-    KNOWLEDGE_DESCRIPTION VARCHAR(2000) NOT NULL,
-    CREATION_DATE         DATE          NOT NULL,
-    PRIMARY KEY (KNOWLEDGE_ID)
+    KNOWLEDGE_ID          int auto_increment
+        primary key,
+    TITLE                 varchar(250)  not null,
+    KNOWLEDGE_DESCRIPTION varchar(2000) not null,
+    CREATION_DATE         date          not null
 );
-CREATE TABLE PACKAGE
+create table package
 (
-    PACKAGE_ID INT          NOT NULL AUTO_INCREMENT,
-    TITLE     VARCHAR(250) NOT NULL,
-    PRIMARY KEY (PACKAGE_ID)
+    PACKAGE_ID int auto_increment
+        primary key,
+    TITLE      varchar(250) not null
 );
-CREATE TABLE KNOWLEDGE_PACKAGE
+
+create table knowledge_package
 (
-    KNOWLEDGE_ID INT,
-    PACKAGE_ID   INT,
-    PRIMARY KEY (KNOWLEDGE_ID, PACKAGE_ID),
-
-    CONSTRAINT KNOWLEDGE_SUB_ID_FK
-        FOREIGN KEY (KNOWLEDGE_ID)
-            REFERENCES KNOWLEDGE (KNOWLEDGE_ID),
-
-    CONSTRAINT PACKAGE_SUB_ID_FK
-        FOREIGN KEY (PACKAGE_ID)
-            REFERENCES PACKAGE (PACKAGE_ID)
+    KNOWLEDGE_ID int not null,
+    PACKAGE_ID   int not null,
+    primary key (KNOWLEDGE_ID, PACKAGE_ID),
+    constraint PACKAGE_SUB_ID_FK
+        foreign key (PACKAGE_ID) references package (PACKAGE_ID)
+            on delete cascade
 );
 
