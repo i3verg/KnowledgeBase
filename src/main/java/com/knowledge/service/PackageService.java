@@ -1,9 +1,10 @@
 package com.knowledge.service;
 
 import com.knowledge.model.Package;
+import com.knowledge.model.dto.PackageCommonDto;
 
 import java.util.List;
 public interface PackageService {
-    List<Package> getAllPackages();
+    List<PackageCommonDto> getAllPackages();
     Package getPackage(int id);
 }

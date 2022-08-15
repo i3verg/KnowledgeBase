@@ -1,6 +1,9 @@
 package com.knowledge.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.knowledge.model.Package;
+import com.knowledge.model.dto.PackageCommonDto;
 import com.knowledge.service.KnowledgeService;
 import com.knowledge.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.json.simple.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,9 +36,10 @@ public class KnowledgePackageController {
 
     @GetMapping(value = "/sets")
     public String getPackages(ModelMap packageModel){
-        List<Package> packages = packageService.getAllPackages();
-        String jsonObj = JSONArray.toJSONString(packages);
-        packageModel.addAttribute("packageSet", jsonObj);
+        List<PackageCommonDto> packages = packageService.getAllPackages();
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        packageModel.addAttribute("packageSet", gson.toJson(packages));
         return "sets";
     }
 

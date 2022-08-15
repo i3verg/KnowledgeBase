@@ -6,11 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <spring:theme code="styleSheet" var="app_css" />
+    <spring:theme code="styleSheet" var="app_css"/>
     <spring:url value="/${app_css}" var="app_css_url"/>
-    <spring:url value="/resources/grid/grid.js" var="grid_url" />
-    <script src="${grid_url}" type="text/javascript"><jsp:text/></script>
+    <spring:url value="/resources/grid/grid.js" var="grid_url"/>
+    <script src="${grid_url}" type="text/javascript">
+        <jsp:text/>
+    </script>
 </head>
+<style>
+    .packageGrid {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+</style>
 <body>
 <c:if test="${not empty msg}">
     ${msg}
@@ -18,8 +28,13 @@
 <c:choose>
     <c:when test="${packageSet != null}">
         <h3>List of packages</h3>
-        <div id="packageGridBox" style="width: 1000px;height: 600px"></div>
+
+        <div id="layout" style="height: 100%;"></div>
+
+
+
         <script type="text/javascript">
+            const dataSheet = new dhx.DataCollection().parse(${packageSet});
             const toolbarData = [
                 {
                     id: "add",
@@ -42,33 +57,24 @@
             ];
             const packageGrid = new dhx.Grid("packageGridBox", {
                 columns: [
-                    { id: "ID", gravity: 3, header: [{text: "ID"}]},
-                    { id: "TITLE", gravity: 2, header: [{text: "ID"}]},
-                    {
-                        id: "action", gravity: 1.5, header: [{text: "Actions", align: "center"}],
-                        htmlEnable: true, align: "center",
-                        template: function () {
-                            return "<span class='action-buttons'><a class='edit-button'>Edit</a><a class='remove-button'>Delete</a></span>"
-                        }
-                    }
-
+                    {width: 500, id: "knowledgePackageId", header: [{text: "ID"}]},
+                    {width: 500, id: "knowledgePackageTitle", header: [{text: "TITLE"}]}
                 ],
-                autoWidth: true,
-                eventHandlers: {
-                    onclick: {
-                        "remove-button": function (e,data){
-                            packageGrid.data.remove(data.row.id);
-                        }
-                    }
-                }
+                headerRowHeight: 42,
+                data: dataSheet,
+                adjust: true
             });
-            packageGrid.data.load(${packageSet});
+            initGrid();
         </script>
+
     </c:when>
     <c:otherwise>
         No User found in the DB!
     </c:otherwise>
 </c:choose>
+<div id="packageGrid" style="height: 100%; width: 100%">
+
+</div>
 </body>
 </html>
 
