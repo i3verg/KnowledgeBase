@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class PackageServiceImpl implements PackageService {
-
     PackageDao packageDao;
     MappingUtils mappingUtils = new MappingUtils();
 
@@ -39,7 +38,10 @@ public class PackageServiceImpl implements PackageService {
         return packageDao.getPackage(id);
     }
 
-    public PackageDao getPackageDao() {
-        return packageDao;
+    @Override
+    public int deletePackage(int id) {
+        return packageDao.deletePackage(id);
     }
+
+
 }

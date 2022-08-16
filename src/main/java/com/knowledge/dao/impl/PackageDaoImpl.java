@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Repository("packageDao")
+@Repository
 public class PackageDaoImpl implements PackageDao {
     private JdbcTemplate jdbcTemplate;
 

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@Repository("knowledgeDao")
+@Repository
 public class KnowledgeDaoImpl implements KnowledgeDao {
 
     private JdbcTemplate jdbcTemplate;
