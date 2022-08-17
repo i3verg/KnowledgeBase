@@ -8,7 +8,25 @@
     <title>Title</title>
     <script type="text/javascript" src="/resources/grid/grid.js"></script>
     <link rel="stylesheet" href="/resources/grid/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .deleteButton{
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Darker background on mouse-over */
+        .deleteButton:hover {
+            background-color: RoyalBlue;
+        }
+    </style>
 </head>
+<body>
+
 <div id="packageGrid" >
     <h3>List of packages</h3>
     <section class="dhx_sample-controls">
@@ -23,71 +41,6 @@
     <c:when test="${packageSet != null}">
         <script type="text/javascript">
             const dataSheet = new dhx.DataCollection().parse(${packageSet});
-            const toolbarData = [
-                {
-                    id: "add",
-                    type: "button",
-                    circle: true,
-                    value: "Add new knowledge set",
-                    size: "small",
-                    full: true
-                },
-                {
-                    type: "spacer"
-                }
-            ];
-            const editToolbarData = [
-                {
-                    id: "close",
-                    icon: "dxi dxi-close",
-                    circle: true
-                }
-            ];
-            const editFormConfig = {
-                padding: 0,
-                rows: [
-                    {
-                        id: "id",
-                        type: "input",
-                        name: "id",
-                        hidden: true
-                    },
-                    {
-                        type: "input",
-                        name: "title",
-                        label: "Title"
-                    },
-                    {
-                        type: "input",
-                        name: "authors",
-                        label: "Authors"
-                    },
-                    {
-                        type: "input",
-                        name: "average_rating",
-                        label: "Rating"
-                    },
-                    {
-                        type: "datepicker",
-                        name: "publication_date",
-                        label: "Publication date",
-                        dateFormat: "%d/%m/%Y"
-                    },
-                    {
-                        align: "end",
-                        cols: [
-                            {
-                                id: "apply-button",
-                                type: "button",
-                                text: "Apply",
-                                icon: "mdi mdi-check",
-                                circle: true,
-                            }
-                        ]
-                    }
-
-                ]
-            }
             const packageGrid = new dhx.Grid("packageGridBox", {
                 css: "dhx_demo-grid",
                 columns: [
@@ -95,15 +48,15 @@
                     {id: "knowledgePackageTitle", header: [{text: "TITLE"}, {content: "inputFilter"}]},
                     {
                         id: "action", gravity: 1.5, header: [{ text: "Actions", align: "center", rowspan: 2 }],
-                        htmlEnable: true, align: "center",
+                        htmlEnable: true, align: "center", template: deleteButtonTemplate
 
-                        template: function () {
+                        /*template: function () {
                             return "<div class='myCustomCell'><span>United Kingdom</span><img src='https://snippet.dhtmlx.com/codebase/data/combobox/01/img/gb.png'></div>"
-                        }
+                        }*/
                     }
                 ],
                 autoWidth: true,
-                height: (Number(dataSheet.length)+2)*35,
+                height: (Number(dataSheet.length)+2)*50,
                 rowHeight: 30,
                 data: dataSheet,
                 htmlEnable: true,
@@ -127,24 +80,8 @@
                 },
                 selection : "row"
             });
-
-            //packageGrid.events.on("click", function(id) {
-              //  if (id)
-            //})
-
-            function openEditor(id) {
-                editWindow.show();
-                const item = grid.data.getItem(id);
-                if (item) {
-                    editForm.setValue(item);
-                }
-            }
-            function closeEditor() {
-                editForm.clear();
-                editWindow.hide();
-            }
-            function deletePackage(id){
-
+            function deleteButtonTemplate(){
+                return '<button class="deleteButton"><i class="fa fa-trash"></i></button>';
             }
 
         </script>
@@ -154,6 +91,6 @@
         No User found in the DB!
     </c:otherwise>
 </c:choose>
-<div id="toolbarData" style="height: 50px"></div>
+</body>
 </html>
 
