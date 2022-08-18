@@ -43,5 +43,8 @@ public class PackageServiceImpl implements PackageService {
         return packageDao.deletePackage(id);
     }
 
-
+    @Override
+    public void addPackageSet(String packageTitle, List<Integer> knowledgeIds) {
+         packageDao.addPackage(packageTitle, knowledgeIds);
+    }
 }

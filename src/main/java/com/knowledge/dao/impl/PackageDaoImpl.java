@@ -45,17 +45,17 @@ public class PackageDaoImpl implements PackageDao {
 
     @Override
     @Transactional
-    public void addPackage(String packageName, List<Knowledge> knowledgeList) {
+    public void addPackage(String packageTitle, List<Integer> knowledgeList) {
         Map<String, Object> parameters = new HashMap<>();
         var simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         simpleJdbcInsert.withTableName("PACKAGE").usingGeneratedKeyColumns("PACKAGE_ID");
-        parameters.put("TITLE", packageName);
+        parameters.put("TITLE", packageTitle);
         Number insertedId = simpleJdbcInsert.executeAndReturnKey(parameters);
         parameters.clear();
 
-        for (Knowledge knowledge : knowledgeList) {
+        for (Integer knowledgeId : knowledgeList) {
             simpleJdbcInsert.withTableName("KNOWLEDGE_PACKAGE");
-            parameters.put("KNOWLEDGE_ID", knowledge.getKnowledgeId());
+            parameters.put("KNOWLEDGE_ID", knowledgeId);
             parameters.put("PACKAGE_ID", insertedId);
             simpleJdbcInsert.execute(parameters);
             parameters.clear();

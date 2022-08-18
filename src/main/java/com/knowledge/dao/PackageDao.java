@@ -9,7 +9,7 @@ public interface PackageDao {
      List<Package> getAllPackages();
      Package getPackage(int packageId);
      List<Knowledge> getPackageWithKnowledge(int id);
-     void addPackage(String packageName, List<Knowledge> knowledgeList);
+     void addPackage(String packageName, List<Integer> knowledgeList);
      int deletePackage(int packageId);
 
 

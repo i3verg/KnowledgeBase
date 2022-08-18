@@ -28,17 +28,13 @@ public class Package {
         this.knowledgeSet = knowledgeSet;
     }
 
-
-
-    /*private void addKnowledge(Knowledge knowledge){
-        this.knowledgeSet.add(createKnowledgeReference(knowledge));
+    public Set<KnowledgeReference> getKnowledgeSet() {
+        return knowledgeSet;
     }
-    private KnowledgeReference createKnowledgeReference(Knowledge knowledge){
-        KnowledgeReference knowledgeReference = new KnowledgeReference();
-        knowledgeReference.knowledgeRefId = knowledge.getKnowledgeId();
-        knowledgeReference.referenceTitle = knowledge.getKnowledgeTitle();
-        return knowledgeReference;
-    }*/
+
+    public void setKnowledgeSet(Set<KnowledgeReference> knowledgeSet) {
+        this.knowledgeSet = knowledgeSet;
+    }
 
     public int getKnowledgePackageId() {
         return knowledgePackageId;

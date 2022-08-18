@@ -9,8 +9,9 @@
     <script type="text/javascript" src="/resources/grid/grid.js"></script>
     <link rel="stylesheet" href="/resources/grid/grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="/resources/jquery-3.6.0.js"></script>
     <style>
-        .deleteButton{
+        .deleteButton {
             background-color: DodgerBlue;
             border: none;
             color: white;
@@ -27,10 +28,10 @@
 </head>
 <body>
 
-<div id="packageGrid" >
+<div id="packageGrid">
     <h3>List of packages</h3>
     <section class="dhx_sample-controls">
-        <button id="hide" class="dhx_sample-btn dhx_sample-btn--flat">Add knowledge set"</button>
+        <button id="addButton" class="btnAdd">Add knowledge set</button>
     </section>
 </div>
 
@@ -47,16 +48,12 @@
                     {id: "knowledgePackageId", header: [{text: "ID"}, {content: "inputFilter"}]},
                     {id: "knowledgePackageTitle", header: [{text: "TITLE"}, {content: "inputFilter"}]},
                     {
-                        id: "action", gravity: 1.5, header: [{ text: "Actions", align: "center", rowspan: 2 }],
+                        id: "action", gravity: 1.5, header: [{text: "Actions", align: "center", rowspan: 2}],
                         htmlEnable: true, align: "center", template: deleteButtonTemplate
-
-                        /*template: function () {
-                            return "<div class='myCustomCell'><span>United Kingdom</span><img src='https://snippet.dhtmlx.com/codebase/data/combobox/01/img/gb.png'></div>"
-                        }*/
                     }
                 ],
                 autoWidth: true,
-                height: (Number(dataSheet.length)+2)*50,
+                height: (Number(dataSheet.length) + 2) * 50,
                 rowHeight: 30,
                 data: dataSheet,
                 htmlEnable: true,
@@ -64,31 +61,25 @@
                 sortable: true,
                 eventHandlers: {
                     onclick: {
-                        "remove-button": function (e, data) {
+                        "deleteButton": function (e, data) {
                             $.ajax({
                                 type: "DELETE",
-                                url: 'http://localhost:8080/set/'+data.row.knowledgePackageId,
-                                error : function (error){
-                                    alert(error);                                }
+                                url: 'http://localhost:8080/set/' + data.row.knowledgePackageId,
                             })
                             packageGrid.data.remove(data.row.id)
                         },
-                        "edit-button": function (e, data) {
-                            openEditor(data.row.id);
-                        }
                     }
                 },
-                selection : "row"
+                selection: "row"
             });
-            function deleteButtonTemplate(){
+            function deleteButtonTemplate() {
                 return '<button class="deleteButton"><i class="fa fa-trash"></i></button>';
             }
-
         </script>
 
     </c:when>
     <c:otherwise>
-        No User found in the DB!
+        No Package found in the DB!
     </c:otherwise>
 </c:choose>
 </body>
